@@ -14,20 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {  
-        \App\Models\User::factory(100)->create()->each(function($user){
-            \App\Models\UserDomicilio::factory()->times(rand(1,3))->create([
-                'user_id'=>$user->id
-            ]);    
-        });
-
-        /*
-        \App\Models\User::factory(10)->has(
-            \App\Models\UserDomicilio::factory()->times(rand(1, 8))
-        )->create();*/
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory(100)->has(
+            \App\Models\UserDomicilio::factory()
+        )->create();
     }
 }
